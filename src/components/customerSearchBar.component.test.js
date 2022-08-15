@@ -2,11 +2,6 @@ import CustomerSearchBar from "./customerSearchBar";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-it("renders welcome message", () => {
-  render(<CustomerSearchBar />);
-  expect(screen.getByText("Name")).toBeInTheDocument();
-});
-
 describe("Should test CustomerSearchBar", () => {
   const mockProps = {
     setCustomerList: jest.fn(),
@@ -46,7 +41,7 @@ describe("Should test CustomerSearchBar", () => {
     expect(resetButton).toBeInTheDocument();
   });
 
-  test("Should reset all fields when reset button clicks", () => {
+  test("Should reset all fields when reset button clicked", () => {
     render(<CustomerSearchBar {...mockProps} />);
 
     let nameInput = screen.getByTestId("customer-search-bar-name-input");

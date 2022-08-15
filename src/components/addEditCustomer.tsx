@@ -1,12 +1,7 @@
 import { Form, Input, Modal, Select, message } from "antd";
 import React, { useEffect, useState } from "react";
 import { firebaseDatabase } from "../firebase/index";
-import {
-  setDoc,
-  collection,
-  doc,
-  updateDoc,
-} from "firebase/firestore/lite";
+import { setDoc, collection, doc, updateDoc } from "firebase/firestore/lite";
 import { CustomerType } from "./types";
 
 interface AddEditCustomerProps {
@@ -73,7 +68,7 @@ function AddEditCustomer({
     } else {
       // add customer.
       const newRef = doc(collection(firebaseDatabase, "customer"));
-      const newDate = new Date()
+      const newDate = new Date();
       const newCustomer: CustomerType = {
         ...customerDetails,
         id: newRef.id,

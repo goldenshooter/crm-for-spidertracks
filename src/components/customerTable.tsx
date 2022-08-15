@@ -187,7 +187,11 @@ function CustomerTable({
   ];
 
   return (
-    <Space direction="vertical" style={{ width: "100%" }}>
+    <Space
+      data-testid="customer-table-container"
+      direction="vertical"
+      style={{ width: "100%" }}
+    >
       <CustomerSearchBar
         setCustomerList={setCustomerList}
         setCustomerForLoadingSales={setCustomerForLoadingSales}
@@ -195,12 +199,17 @@ function CustomerTable({
       <Table
         columns={columns}
         dataSource={customerList}
+        data-testid="customer-table-table"
         loading={loading}
         rowKey={(record) => record.id}
         title={() => (
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <Title level={5}>Customer</Title>
-            <Button type="primary" onClick={() => newOnClick()}>
+            <Button
+              data-testid="customer-table-table-button-new"
+              type="primary"
+              onClick={() => newOnClick()}
+            >
               New
             </Button>
           </div>
