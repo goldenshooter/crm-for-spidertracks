@@ -15,9 +15,9 @@
     return result;
   }
 
-  export function displaySaleStatus(saleDetails: number): string {
+  export function displaySaleStatus(saleStatus: number): string {
     let result = "";
-    switch (saleDetails) {
+    switch (saleStatus) {
       case 0:
         result = "New";
         break;
