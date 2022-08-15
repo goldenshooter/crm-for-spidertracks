@@ -56,7 +56,6 @@ function AddEditSale({
   };
 
   const onSave = () => {
-    console.log(saleDetails);
     setLoading(true);
     if (!!saleDetails.id) {
       // update sale.

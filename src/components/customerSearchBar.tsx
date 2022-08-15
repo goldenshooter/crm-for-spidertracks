@@ -36,7 +36,6 @@ function CustomerSearchBar({
     if (customerEmail) {
       constraints.push(where("email", "==", customerEmail));
     }
-    console.log(constraints);
     const salesQuery = query(
       collection(firebaseDatabase, "customer"),
       ...constraints

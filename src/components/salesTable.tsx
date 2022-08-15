@@ -17,6 +17,7 @@ import {
 } from "firebase/firestore/lite";
 import AddEditSales from "./addEditSale";
 import { CustomerType, SalesOpportunityType } from "./types";
+import { displaySaleStatus } from "./helperFunctions";
 
 interface SalesTableProps {
   customerForLoadingSales: CustomerType;
@@ -49,7 +50,6 @@ function SalesTable({
         let sales = querySnapshot.docs.map((doc) =>
           Object.assign({}, { id: doc.id, ...doc.data() })
         );
-        console.log(sales);
         setSaleList(sales);
       });
       setLoading(false);
@@ -104,22 +104,6 @@ function SalesTable({
     setModalVisible(true);
   }
 
-  function displayStatus(saleDetails: number): string {
-    let result = "";
-    switch (saleDetails) {
-      case 0:
-        result = "New";
-        break;
-      case 1:
-        result = "Closed Won";
-        break;
-      case 2:
-        result = "Closed Lost";
-        break;
-    }
-    return result;
-  }
-
   function updateSingleSale(saleDetails: SalesOpportunityType) {
     setSaleList(
       saleList.map((eachSale) => {
@@ -143,7 +127,7 @@ function SalesTable({
     {
       title: "Status",
       dataIndex: "status",
-      render: (text) => displayStatus(text),
+      render: (text) => displaySaleStatus(text),
     },
     {
       title: "Action",

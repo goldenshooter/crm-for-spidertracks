@@ -18,6 +18,7 @@ import {
 import AddEditCustomer from "./addEditCustomer";
 import { CustomerType, SalesOpportunityType } from "./types";
 import CustomerSearchBar from "./customerSearchBar";
+import { displayCustomerStatus } from "./helperFunctions";
 
 interface CustomerTableProps {
   customerForLoadingSales: CustomerType;
@@ -55,7 +56,6 @@ function CustomerTable({
       const customerList = customersSnapshot.docs.map((doc) =>
         Object.assign({}, { id: doc.id, ...doc.data() })
       );
-      console.log(customerList);
       setCustomerList(customerList);
       setLoading(false);
     });
@@ -124,22 +124,6 @@ function CustomerTable({
     });
   }
 
-  function displayStatus(customerStatus: number): string {
-    let result = "";
-    switch (customerStatus) {
-      case 0:
-        result = "Active";
-        break;
-      case 1:
-        result = "Non-Active";
-        break;
-      case 2:
-        result = "Lead";
-        break;
-    }
-    return result;
-  }
-
   function updateSingleCustomer(customer: CustomerType) {
     setCustomerList(
       customerList.map((eachCustomer) => {
@@ -173,7 +157,7 @@ function CustomerTable({
     {
       title: "Status",
       dataIndex: "status",
-      render: (text) => displayStatus(text),
+      render: (text) => displayCustomerStatus(text),
     },
     {
       title: "Phone",
@@ -203,7 +187,7 @@ function CustomerTable({
   ];
 
   return (
-    <Space direction="vertical" style={{ minWidth: "100%" }}>
+    <Space direction="vertical" style={{ width: "100%" }}>
       <CustomerSearchBar
         setCustomerList={setCustomerList}
         setCustomerForLoadingSales={setCustomerForLoadingSales}
