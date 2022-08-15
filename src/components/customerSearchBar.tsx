@@ -74,6 +74,7 @@ function CustomerSearchBar({
         <span>Name</span>
         <Input
           allowClear
+          data-testid="customer-search-bar-name-input"
           value={customerName}
           onChange={(e) => setCustomerName(e.target.value)}
         />
@@ -83,6 +84,7 @@ function CustomerSearchBar({
         <span>Status</span>
         <Select
           placeholder="Select a status"
+          data-testid="customer-search-bar-status-select"
           allowClear
           value={customerStatus}
           onChange={(value) => setCustomerStatus(value)}
@@ -98,6 +100,7 @@ function CustomerSearchBar({
         <span>Phone</span>
         <Input
           allowClear
+          data-testid="customer-search-bar-phone-input"
           value={customerPhone}
           onChange={(e) => setCustomerPhone(e.target.value)}
         />
@@ -107,16 +110,19 @@ function CustomerSearchBar({
         <span>Email</span>
         <Input
           allowClear
+          data-testid="customer-search-bar-email-input"
           value={customerEmail}
           onChange={(e) => setCustomerEmail(e.target.value)}
         />
       </Space>
 
-      <Button type="primary" onClick={onSearch} loading={loading}>
+      <Button data-testid="customer-search-bar-search-button" type="primary" onClick={onSearch} loading={loading}>
         Serach
       </Button>
 
-      <Button onClick={onReset}>Reset</Button>
+      <Button data-testid="customer-search-bar-reset-button" onClick={onReset}>
+        Reset
+      </Button>
     </Space>
   );
 }
